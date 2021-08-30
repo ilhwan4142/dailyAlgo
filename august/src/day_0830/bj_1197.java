@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 
 public class bj_1197 {
 
+	// 목적지와 가중치 저장하는 class
 	static class Edge implements Comparable<Edge> {
 		int v;
 		long w;
@@ -28,9 +29,11 @@ public class bj_1197 {
 	}
 
 	public static void main(String[] args) throws IOException {
+		// 입력 받는 함수
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
+		// 정점 간선 입력 받음
 		int V = Integer.parseInt(st.nextToken());
 		int E = Integer.parseInt(st.nextToken());
 
@@ -41,6 +44,7 @@ public class bj_1197 {
 			alist[i] = new ArrayList<Edge>();
 		}
 
+		// 그래프 값 입력 받고 arraylist에 값 넣어줌
 		for (int i = 0; i < E; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			int start = Integer.parseInt(st.nextToken());
@@ -65,13 +69,13 @@ public class bj_1197 {
 				}
 			}
 			while (!pq.isEmpty()) {
-				int next = pq.peek().v;
-				long nv = pq.peek().w;
+				int nv = pq.peek().v;
+				long nw = pq.peek().w;
 				pq.poll();
-				if (!visit[next]) {
-					visit[next] = true;
-					dq.add(next);
-					rst += nv;
+				if (!visit[nv]) {
+					visit[nv] = true;
+					dq.add(nv);
+					rst += nw;
 					break;
 				}
 			}
